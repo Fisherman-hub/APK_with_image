@@ -1,3 +1,6 @@
 from django.contrib import admin
+from APK_image.models import Violation, GasPipelines
 
-# Register your models here.
+admin.site.register(Violation)
+
+admin.site.register(GasPipelines)
