@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 
 
 class GasPipelines(models.Model):
@@ -15,6 +17,9 @@ class GasPipelines(models.Model):
 
 class Violation(models.Model):
     photo_violation = models.ImageField(upload_to='photo_violation/%Y-%m-%d', verbose_name='Фото замечания')
+    photo_violation_phumbnail = ImageSpecField(source='photo_violation',
+                                               processors=[ResizeToFit(300, 300)],
+                                               options={'quality': 60})
     photo_with_out_violation = models.ImageField(blank=True, verbose_name='Фото устранения замечания')
     object = models.CharField(max_length=255, verbose_name='Объект')
     text_violation = models.TextField(verbose_name='Описание нарушения')
@@ -27,6 +32,7 @@ class Violation(models.Model):
     class Meta:
         verbose_name = 'Замечание'
         verbose_name_plural = 'Замечания'
+        ordering = ['date_elimination']
 
     def __str__(self):
         return '{} {}'.format(self.object, self.gas_pipeline)
