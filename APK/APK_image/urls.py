@@ -1,12 +1,16 @@
 
 from django.urls import path
-from APK_image.views import index, filter_violations
+from APK_image.views import Index, Filter_Violations
+from APK_image.views import ViolationFormView
+
 from django.conf.urls.static import static
-from django.conf import settings # new
+from django.conf import settings
+
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('<int:gas_pipeline_pk>/', filter_violations, name='filter_violations'),
+    path('', Index.as_view(), name='index'),
+    path('<int:gas_pipeline_pk>/', Filter_Violations.as_view(), name='filter_violations'),
+    path('add_violation/', ViolationFormView.as_view(), name='add_violation'),
 ]
 
 if settings.DEBUG: # new

@@ -12,7 +12,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
 
-    <title>{% block title %}Главная страница{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
@@ -30,7 +30,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Внести замечание</a>
+                    <a class="nav-link active" aria-current="page" href="/">Главная страница</a>
+                </li><li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'add_violation'%}">Внести замечание</a>
                 </li>
             </ul>
         </div>
