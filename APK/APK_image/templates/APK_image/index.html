@@ -37,7 +37,28 @@
         </div>
         {% endfor %}
     </div>
+<div>
+    <div class="navbar-fixed-bottom row-fluid">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav nav-pills nav-fill">
+                    {% if page_obj.has_next %}
+                    <li class="nav-item m-3">
+                        <a class="nav-link active" href="?page={{ page_obj.next_page_number }}">Следующая страница</a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_previous %}
+                    <li class="nav-item m-3">
+                        <a class="nav-link active" href="?page={{ page_obj.previous_page_number }}">Предыдущая
+                            страница</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
 
+</div>
 </div>
 {% endblock %}
 

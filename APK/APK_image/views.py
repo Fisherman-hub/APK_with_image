@@ -7,6 +7,7 @@ from APK_image.forms import ViolationForm
 
 
 class Index(ListView):
+    paginate_by = 5
     model = Violation
     template_name = 'APK_image/index.html'
     context_object_name = 'violations'
